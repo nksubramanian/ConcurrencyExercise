@@ -8,9 +8,7 @@ namespace Concurrency
     {
         static void Main(string[] args)
         {
-            var task = new Task<int>(TextLength,"subbu");
-            task.Start();
-            //task.Wait();
+            var task = Task.Factory.StartNew<int>(TextLength, "subramanian");
             Console.WriteLine(task.Result);
 
 
