@@ -8,16 +8,17 @@ namespace Concurrency
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(TextLength("subbu"));
-            var task = Task.Run(() => { return TextLength("subbu"); });
-            var awaiter = task.GetAwaiter();
-            var result = awaiter.GetResult();
+            var task = new Task<int>(TextLength,"subbu");
+            task.Start();
+            //task.Wait();
+            Console.WriteLine(task.Result);
 
 
         }
 
         public static int TextLength(object o)
         {
+            Thread.Sleep(1000);
             return o.ToString().Length;
         }
 
