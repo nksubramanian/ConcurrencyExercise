@@ -8,11 +8,8 @@ namespace Concurrency
     {
         static void Main(string[] args)
         {
-            
-            var task = Task.Run(() => { printNTimes();});
-            Task.WaitAll(task);
-            //Thread.Sleep(3000);
-            Console.WriteLine("Hello World!");
+            Task.Factory.StartNew(() => printNTimes());
+            Thread.Sleep(1000);
         }
 
         public static void printNTimes()
