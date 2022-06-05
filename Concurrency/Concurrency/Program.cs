@@ -9,6 +9,7 @@ namespace Concurrency
         static void Main(string[] args)
         {
             var task = Task.Factory.StartNew<int>(TextLength, "subramanian");
+            Console.WriteLine("SUBBU");
             Console.WriteLine(task.Result);
 
 
@@ -17,6 +18,7 @@ namespace Concurrency
         public static int TextLength(object o)
         {
             Thread.Sleep(1000);
+            Console.WriteLine(Task.CurrentId);
             return o.ToString().Length;
         }
 
