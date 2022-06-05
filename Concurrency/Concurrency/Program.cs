@@ -8,18 +8,20 @@ namespace Concurrency
     {
         static void Main(string[] args)
         {
-            Task.Factory.StartNew(printNTimes, 100);
-            Thread.Sleep(100);
+            Console.WriteLine(TextLength("subbu"));
+            var task = Task.Run(() => { return TextLength("subbu"); });
+            var awaiter = task.GetAwaiter();
+            var result = awaiter.GetResult();
+
+
         }
 
-        public static void printNTimes(object x)
+        public static int TextLength(object o)
         {
-            int i = 1000;
-            while(i-->0)
-            {
-                Console.WriteLine(x);
-            }
+            return o.ToString().Length;
         }
+
+
 
     }
 }
